@@ -13,7 +13,8 @@ public class gameService {
         return "Is this service working";
     }
 
-    public String postCreateGame(String balance){
-        return balance;
+    public String postCreateGame(Integer balance){
+        Game Game1 = new Game(balance);
+        return "Game created with balance of "+Game1.toString();
     }
 }

@@ -23,7 +23,7 @@ public class gameController {
     }
 
     @PostMapping("/game")
-    public String createGame(@RequestParam String balance){   
+    public String createGame(@RequestParam Integer balance){   
         return this.gameService.postCreateGame(balance);
     }
 
