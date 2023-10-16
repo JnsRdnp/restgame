@@ -21,6 +21,7 @@ public class gameService {
         return "Bet amount set to "+String.valueOf(this.Game1.getBetAmount());
     }
 
+
     public String getHit(){
         String results = this.Game1.hit();
         if(results.contains("21")){
