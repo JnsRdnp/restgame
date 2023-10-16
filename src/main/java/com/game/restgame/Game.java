@@ -25,6 +25,10 @@ public class Game {
         this.betAmount = betAmount;
     }
 
+    // public int getRandomNumber(){
+    //     return 0;
+    // }
+
     @Override
     public String toString(){
         return String.valueOf(this.balance);

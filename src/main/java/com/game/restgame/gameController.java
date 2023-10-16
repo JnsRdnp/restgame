@@ -21,10 +21,14 @@ public class gameController {
     public String homepage(){
         return this.gameService.getHomePage();
     }
-
-    @PostMapping("/game")
+    
+    @PostMapping("/setbalance")
     public String createGame(@RequestParam Integer balance){   
-        return this.gameService.postCreateGame(balance);
+        return this.gameService.postBalance(balance);
     }
 
+    @PostMapping("/setbetsize")
+    public String betsize(@RequestParam Integer bet){   
+        return this.gameService.postBetsize(bet);
+    }
 }
