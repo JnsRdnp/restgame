@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class gameService {
     Game Game1 = new Game(100);
-    
+
     public String getHomePage(){
         return "This is the homepage, service";
     }
@@ -23,7 +23,7 @@ public class gameService {
 
     public String getHit(){
         String results = this.Game1.hit();
-        if(results.contains("over")){
+        if(results.contains("21")){
             this.Game1.resetNumbers();
         }
         return results;
@@ -33,7 +33,6 @@ public class gameService {
         String results = this.Game1.stay();
         this.Game1.resetNumbers();
         return results;
-
     }
 
 

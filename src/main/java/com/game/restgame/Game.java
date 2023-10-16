@@ -42,9 +42,10 @@ public class Game {
     public String hit(){
         if (currentNumber<21){
             currentNumber += RandonNumber.nextInt(11)+1;
+            if(currentNumber==21) {
+                return "You got 21!";
+            }
             return getCurrentNumberStr();
-        } else if(currentNumber==21) {
-            return "You got 21!";
         }else{
             // this.balance -= this.betAmount;
             return "You went over 21 -> "+ getCurrentNumberStr();
