@@ -16,27 +16,27 @@ public class gameController {
     public gameController(gameService service){
         this.gameService = service;
     }
-
+    //Info etc
     @GetMapping("/")
     public String homepage(){
         return this.gameService.getHomePage();
     }
-    
+    //Set players balance
     @PostMapping("/setbalance")
     public String createGame(@RequestParam Integer balance){   
         return this.gameService.postBalance(balance);
     }
-
+    //Set size of bets
     @PostMapping("/setbetsize")
     public String betsize(@RequestParam Integer bet){   
         return this.gameService.postBetsize(bet);
     }
-
+    //Deal for player
     @GetMapping("/hit")
     public String hit(){
         return this.gameService.getHit();
     }
-
+    //Stay and deal for dealer
     @GetMapping("/stay")
     public String stay(){
         return this.gameService.getStay();

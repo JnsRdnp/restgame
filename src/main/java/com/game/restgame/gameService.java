@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class gameService {
     Game Game1 = new Game(100);
-
+    
     public String getHomePage(){
         return "This is the homepage, service";
     }
