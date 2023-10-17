@@ -60,21 +60,20 @@ public class gameService {
 
     //Json demoing
     public String getGame(String params) {
-        // return String.format("Balance: %d Betsize: %d  Players hand: %d Dealers hand: %d",this.Game1.getBalance(),this.Game1.getBetAmount(),this.Game1.getPlayerNumber(),this.Game1.getDealerNumber());
+
         if (params != null) {
             switch(params){
                 case "balance":
-                    return String.format("Balance: d%",this.Game1.getBalance());
+                    return String.format("Balance: %d",this.Game1.getBalance());
                 case "betsize":
-                    return String.format("Betsize: d%",this.Game1.getBetAmount());
+                    return String.format("Betsize: %d",this.Game1.getBetAmount());
             }
+            return  "Wrong type of param";
 
         } else{
-            // return String.valueOf(this.Game1.getBalance(), this);
             return String.format("Balance: %d\nBetsize: %d\nPlayers hand: %d\nDealers hand: %d",this.Game1.getBalance(),this.Game1.getBetAmount(),this.Game1.getPlayerNumber(),this.Game1.getDealerNumber());
         }
         
-        //return "hello";
     }
 
     public void saveObjectProperties() {
