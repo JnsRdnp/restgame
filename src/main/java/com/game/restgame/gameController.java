@@ -39,21 +39,17 @@ public class gameController {
         return this.gameService.getHit();
     }
 
-    //Stay, deal for dealer and tell who won and adjust the balance
+    //Player stay and deal for dealer and tell who won and adjust the balance
     @GetMapping("/stay")
     public String stay(){
         return this.gameService.getStay();
     }
 
-    //Get current Game object values
+    //Get current Game object values, if param=balance or param=betsize is given it just gives them
     @GetMapping("/values")
-    public Game getProp(@RequestParam(required = false) String param) {
+    public String getProp(@RequestParam(required = false) String param) {
         // You can use the "param" parameter to conditionally modify your response
-        if (param != null) {
-            // Handle the parameter as needed
-        }
-
-        return gameService.getGame();
+        return gameService.getGame(param);
     }
 
     //Save current Game object to a file

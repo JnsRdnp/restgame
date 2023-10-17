@@ -23,9 +23,9 @@ public class gameService {
         homeJson.put("/","Endpoint info for this Blackjack style game");
         homeJson.put("/setbalance","Set your balance POST /setbalance?balance=x");
         homeJson.put("/setBetsize","Set your betsize POST /setbetsize?bet=x");
-        homeJson.put("/hit","Deal a card for the player GET");
+        homeJson.put("/hit","Deal a card for the player and returns Game object JSON GET");
         homeJson.put("/stay","Player stay on number and deal for dealer GET");
-        homeJson.put("/values","Current Game values in JSON GET");
+        homeJson.put("/values","Current Game values, OPTIONAL(param=balance/betsize) GET");
         homeJson.put("/save","Save current game object to a file GET");
         homeJson.put("/getsaved","Get saved Game object from a file and overwrite current Game object GET");
 
@@ -58,8 +58,21 @@ public class gameService {
     }
 
     //Json demoing
-    public Game getGame(){
-        return this.Game1;
+    public String getGame(String params) {
+
+        if (params != null) {
+            switch(params){
+                case "balance":
+                    return String.format("Balance: %d",this.Game1.getBalance());
+                case "betsize":
+                    return String.format("Betsize: %d",this.Game1.getBetAmount());
+            }
+            return  "Wrong type of param";
+
+        } else{
+            return String.format("Balance: %d\nBetsize: %d\nPlayers hand: %d\nDealers hand: %d",this.Game1.getBalance(),this.Game1.getBetAmount(),this.Game1.getPlayerNumber(),this.Game1.getDealerNumber());
+        }
+        
     }
 
     public void saveObjectProperties() {
