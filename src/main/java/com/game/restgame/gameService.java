@@ -1,12 +1,6 @@
 package com.game.restgame;
 
-import java.util.Map;
-
-import org.apache.catalina.valves.JsonAccessLogValve;
 import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.databind.util.JSONPObject;
 
 //Business logic
 @Service
