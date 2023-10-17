@@ -47,18 +47,18 @@ public class Game {
         this.betAmount = betAmount;
     }
 
-    public String hit(){
-        if (currentNumber<21){
-            currentNumber += RandonNumber.nextInt(11)+1;
-            if(currentNumber==21) {
-                return "You got 21!";
+    public Game hit(){
+
+        if(this.getBalance()>this.getBetAmount()){
+            if (currentNumber<21){
+                currentNumber += RandonNumber.nextInt(11)+1;
+            }else{
+                // this.balance -= this.betAmount;
+                setBalance(getBalance()-getBetAmount());
+                this.resetNumbers();
             }
-            return currentNumberStr();
-        }else{
-            // this.balance -= this.betAmount;
-            setBalance(getBalance()-getBetAmount());
-            return "You went over 21 -> "+ currentNumberStr();
         }
+        return this;
     }
 
     public String stay(){

@@ -16,8 +16,8 @@ public class gameService {
         //LinkedHashMap to ensure the order of the JSON map
         Map<String,String> homeJson = new LinkedHashMap<>();
         homeJson.put("/","Endpoint info for this Blackjack style game");
-        homeJson.put("/setBalance","Set your balance POST(balance=)");
-        homeJson.put("/setBetsize","Set your betsize POST(bet=)");
+        homeJson.put("/setbalance","Set your balance POST /setbalance?balance=x");
+        homeJson.put("/setBetsize","Set your betsize POST /setbetsize?bet=x");
         homeJson.put("/hit","Deal a card for the player GET");
         homeJson.put("/stay","Player stay on number and deal for dealer GET");
 
@@ -39,13 +39,7 @@ public class gameService {
 
     public Game getHit(){
         //Perform dealing card for player
-        results = this.Game1.hit();
-        //Reset playernumber if it goes over 21
-        if(results.contains("over")){
-            this.Game1.resetNumbers();
-        }
-        //Return Game1 in json
-        return this.Game1;
+        return Game1.hit();
     }
 
     public String getStay(){
