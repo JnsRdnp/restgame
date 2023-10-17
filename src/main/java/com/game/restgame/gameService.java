@@ -1,6 +1,12 @@
 package com.game.restgame;
 
+import java.util.Map;
+
+import org.apache.catalina.valves.JsonAccessLogValve;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 //Business logic
 @Service
@@ -21,7 +27,6 @@ public class gameService {
         return "Bet amount set to "+String.valueOf(this.Game1.getBetAmount());
     }
 
-
     public String getHit(){
         String results = this.Game1.hit();
         if(results.contains("21")){
@@ -35,6 +40,12 @@ public class gameService {
         this.Game1.resetNumbers();
         return results;
     }
+
+    public Game getGame(){
+        return this.Game1;
+    }
+
+
 
 
 }

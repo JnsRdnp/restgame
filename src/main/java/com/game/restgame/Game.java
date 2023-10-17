@@ -1,5 +1,7 @@
 package com.game.restgame;
 import java.util.Random;
+
+import com.fasterxml.jackson.annotation.JsonGetter;
    
 
 public class Game {
@@ -63,8 +65,14 @@ public class Game {
         }
     }
 
-    @Override
-    public String toString(){
+    @JsonGetter("balance")
+    public String getTheName() {
         return String.valueOf(this.balance);
     }
+
+
+    // @Override
+    // public String toString(){
+    //     return String.valueOf(this.balance);
+    // }
 }

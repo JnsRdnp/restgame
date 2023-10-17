@@ -1,5 +1,8 @@
 package com.game.restgame;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,5 +43,11 @@ public class gameController {
     @GetMapping("/stay")
     public String stay(){
         return this.gameService.getStay();
+    }
+
+    @GetMapping("/values")
+    public Game getProp(){
+
+        return gameService.getGame();
     }
 }
