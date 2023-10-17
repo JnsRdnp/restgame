@@ -50,4 +50,15 @@ public class gameController {
     public Game getProp(){
         return gameService.getGame();
     }
+
+    @GetMapping("/save")
+    public String saves(){
+        gameService.saveObjectProperties();
+        return "Game object saved to a file";
+    }
+
+    @GetMapping("/getsaved")
+    public Game objectFromFile(){
+       return gameService.getSavedPropertiesAndOverwrite();    
+    }
 }

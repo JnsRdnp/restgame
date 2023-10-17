@@ -1,8 +1,11 @@
 package com.game.restgame;
+import java.io.Serializable;
 import java.util.Random;
    
 
-public class Game {
+public class Game implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     private int balance=100;
     private int betAmount=10;
     private int currentNumber=0;

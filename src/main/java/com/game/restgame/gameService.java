@@ -1,5 +1,12 @@
 package com.game.restgame;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -54,7 +61,38 @@ public class gameService {
         return this.Game1;
     }
 
+    public void saveObjectProperties() {
+        try {
+            FileOutputStream fileStream = new FileOutputStream("gameObjects.txt");
+            ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
 
+            objectStream.writeObject(this.Game1);
 
+            // Close the streams when done
+            objectStream.close();
+            fileStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Game getSavedPropertiesAndOverwrite() {
+        try {
+			FileInputStream fi = new FileInputStream(new File("gameObjects.txt"));
+			ObjectInputStream oi = new ObjectInputStream(fi);
+
+            Game GameSaved = (Game) oi.readObject();
+
+            // Close the streams when done
+            oi.close();
+            fi.close();
+            this.Game1 = GameSaved;
+            return this.Game1;
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }
