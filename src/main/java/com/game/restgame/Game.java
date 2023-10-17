@@ -1,7 +1,5 @@
 package com.game.restgame;
 import java.util.Random;
-
-import com.fasterxml.jackson.annotation.JsonGetter;
    
 
 public class Game {
@@ -58,6 +56,7 @@ public class Game {
             return currentNumberStr();
         }else{
             // this.balance -= this.betAmount;
+            setBalance(getBalance()-getBetAmount());
             return "You went over 21 -> "+ currentNumberStr();
         }
     }
@@ -67,9 +66,11 @@ public class Game {
             this.dealerNumber += RandonNumber.nextInt(11) + 1;
         }
         if(this.dealerNumber<=21 && this.dealerNumber>this.currentNumber){
-            return String.format("You: %d  Dealer: %d | Dealer won!", currentNumber, dealerNumber);
+            setBalance(getBalance()-getBetAmount());
+            return String.format("You: %d  Dealer: %d | You lost %d €!", currentNumber, dealerNumber,getBetAmount());
         } else{
-            return String.format("You: %d  Dealer: %d | You won!", currentNumber, dealerNumber);
+            setBalance(getBalance()+getBetAmount());
+            return String.format("You: %d  Dealer: %d | You won %d €!", currentNumber, dealerNumber,getBetAmount());
         }
     }
 
