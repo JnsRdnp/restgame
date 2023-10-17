@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
-
 //Only for endpoint routing
 @RestController
 public class gameController {
@@ -28,19 +26,19 @@ public class gameController {
     public Game createGame(@RequestParam Integer balance){   
         return this.gameService.postBalance(balance);
     }
-    //Set size of bets
+    //Set size of bets and returns String of betsize
     @PostMapping("/setbetsize")
     public String betsize(@RequestParam Integer bet){   
         return this.gameService.postBetsize(bet);
     }
 
-    //Deal for player
+    //Deal card for player and return JSON of BALANCE,betsize,playersnumber,dealernumber
     @GetMapping("/hit")
     public Game hit(){
         return this.gameService.getHit();
     }
 
-    //Stay and deal for dealer
+    //Stay, deal for dealer and tell who won and adjust the balance
     @GetMapping("/stay")
     public String stay(){
         return this.gameService.getStay();
@@ -48,7 +46,6 @@ public class gameController {
 
     @GetMapping("/values")
     public Game getProp(){
-
         return gameService.getGame();
     }
 }

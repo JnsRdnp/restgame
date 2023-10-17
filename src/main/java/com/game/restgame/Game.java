@@ -68,17 +68,13 @@ public class Game {
         if(this.dealerNumber<=21 && this.dealerNumber>this.currentNumber){
             setBalance(getBalance()-getBetAmount());
             return String.format("You: %d  Dealer: %d | You lost %d €!", currentNumber, dealerNumber,getBetAmount());
+        }else if(this.currentNumber==this.dealerNumber){
+            return String.format("You: %d  Dealer: %d | It's a tie!", currentNumber, dealerNumber);
         } else{
             setBalance(getBalance()+getBetAmount());
             return String.format("You: %d  Dealer: %d | You won %d €!", currentNumber, dealerNumber,getBetAmount());
         }
     }
-
-    // @JsonGetter("balance")
-    // public String getTheName() {
-    //     return String.valueOf(this.balance);
-    // }
-
 
     // @Override
     // public String toString(){

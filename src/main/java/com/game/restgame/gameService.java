@@ -30,7 +30,7 @@ public class gameService {
 
     public Game getHit(){
         results = this.Game1.hit();
-        if(results.contains("21")){
+        if(results.contains("over")){
             this.Game1.resetNumbers();
         }
         return this.Game1;
