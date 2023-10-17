@@ -1,5 +1,7 @@
 package com.game.restgame;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,29 +18,36 @@ public class gameController {
     public gameController(gameService service){
         this.gameService = service;
     }
-    //Info etc
+    //Info for blackjack game endpoints
     @GetMapping("/")
-    public String homepage(){
+    public Map<String,String> homepage(){
         return this.gameService.getHomePage();
     }
-    //Set players balance
+    //Set player balance and returns all getters in JSON
     @PostMapping("/setbalance")
-    public String createGame(@RequestParam Integer balance){   
+    public Game createGame(@RequestParam Integer balance){   
         return this.gameService.postBalance(balance);
     }
-    //Set size of bets
+    //Set size of bets and returns String of betsize
     @PostMapping("/setbetsize")
     public String betsize(@RequestParam Integer bet){   
         return this.gameService.postBetsize(bet);
     }
-    //Deal for player
+
+    //Deal card for player and return JSON of BALANCE,betsize,playersnumber,dealernumber
     @GetMapping("/hit")
-    public String hit(){
+    public Game hit(){
         return this.gameService.getHit();
     }
-    //Stay and deal for dealer
+
+    //Stay, deal for dealer and tell who won and adjust the balance
     @GetMapping("/stay")
     public String stay(){
         return this.gameService.getStay();
+    }
+
+    @GetMapping("/values")
+    public Game getProp(){
+        return gameService.getGame();
     }
 }
