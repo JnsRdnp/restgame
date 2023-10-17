@@ -2,12 +2,10 @@ package com.game.restgame;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -27,6 +25,9 @@ public class gameService {
         homeJson.put("/setBetsize","Set your betsize POST /setbetsize?bet=x");
         homeJson.put("/hit","Deal a card for the player GET");
         homeJson.put("/stay","Player stay on number and deal for dealer GET");
+        homeJson.put("/values","Current Game values in JSON GET");
+        homeJson.put("/save","Save current game object to a file GET");
+        homeJson.put("/getsaved","Get saved Game object from a file and overwrite current Game object GET");
 
 
         return homeJson;
