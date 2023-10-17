@@ -1,6 +1,7 @@
 package com.game.restgame;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
@@ -12,13 +13,15 @@ public class gameService {
     String results;
 
     public Map<String,String> getHomePage(){
-        Map<String,String> homeJson = new HashMap<>();
-        homeJson.put("/","you are here");
+        Map<String,String> homeJson = new LinkedHashMap<>();
+        homeJson.put("/","Endpoint info for this Blackjack style game");
         homeJson.put("/setBalance","Set your balance POST(balance=)");
         homeJson.put("/setBetsize","Set your betsize POST(bet=)");
+        homeJson.put("/hit","Deal a card for the player GET");
+        homeJson.put("/stay","Player stay on number and deal for dealer GET");
+
 
         return homeJson;
-
     }
 
     public Game postBalance(Integer balance){

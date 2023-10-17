@@ -1,5 +1,7 @@
 package com.game.restgame;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +18,9 @@ public class gameController {
     public gameController(gameService service){
         this.gameService = service;
     }
-    //Info etc
+    //Info for blackjack game endpoints
     @GetMapping("/")
-    public String homepage(){
+    public Map<String,String> homepage(){
         return this.gameService.getHomePage();
     }
     //Set player balance and returns all getters in JSON
