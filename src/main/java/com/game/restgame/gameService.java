@@ -1,5 +1,8 @@
 package com.game.restgame;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 //Business logic
@@ -8,8 +11,14 @@ public class gameService {
     Game Game1 = new Game(100);
     String results;
 
-    public String getHomePage(){
-        return "This is the homepage, service";
+    public Map<String,String> getHomePage(){
+        Map<String,String> homeJson = new HashMap<>();
+        homeJson.put("/","you are here");
+        homeJson.put("/setBalance","Set your balance POST(balance=)");
+        homeJson.put("/setBetsize","Set your betsize POST(bet=)");
+
+        return homeJson;
+
     }
 
     public Game postBalance(Integer balance){
