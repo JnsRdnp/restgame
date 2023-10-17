@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.util.JSONPObject;
 @Service
 public class gameService {
     Game Game1 = new Game(100);
+    String results;
 
     public String getHomePage(){
         return "This is the homepage, service";
@@ -27,16 +28,16 @@ public class gameService {
         return "Bet amount set to "+String.valueOf(this.Game1.getBetAmount());
     }
 
-    public String getHit(){
-        String results = this.Game1.hit();
+    public Game getHit(){
+        results = this.Game1.hit();
         if(results.contains("21")){
             this.Game1.resetNumbers();
         }
-        return results;
+        return this.Game1;
     }
 
     public String getStay(){
-        String results = this.Game1.stay();
+        results = this.Game1.stay();
         this.Game1.resetNumbers();
         return results;
     }

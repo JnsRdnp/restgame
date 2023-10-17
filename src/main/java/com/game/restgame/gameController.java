@@ -33,11 +33,13 @@ public class gameController {
     public String betsize(@RequestParam Integer bet){   
         return this.gameService.postBetsize(bet);
     }
+
     //Deal for player
     @GetMapping("/hit")
-    public String hit(){
+    public Game hit(){
         return this.gameService.getHit();
     }
+
     //Stay and deal for dealer
     @GetMapping("/stay")
     public String stay(){
