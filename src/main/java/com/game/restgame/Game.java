@@ -9,8 +9,8 @@ public class Game {
     private int betAmount=10;
     private int currentNumber=0;
     private int dealerNumber=0;
-
     Random RandonNumber = new Random();
+
 
     public Game(int balance){
         this.balance = balance;
@@ -21,8 +21,16 @@ public class Game {
         this.dealerNumber = 0;
     }
 
-    public String getCurrentNumberStr(){
+    public int getPlayerNumber(){
+        return this.currentNumber;
+    }
+
+    public String currentNumberStr(){
         return String.valueOf(this.currentNumber);
+    }
+
+    public int getDealerNumber() {
+        return this.dealerNumber;
     }
 
     public int getBalance() {
@@ -47,10 +55,10 @@ public class Game {
             if(currentNumber==21) {
                 return "You got 21!";
             }
-            return getCurrentNumberStr();
+            return currentNumberStr();
         }else{
             // this.balance -= this.betAmount;
-            return "You went over 21 -> "+ getCurrentNumberStr();
+            return "You went over 21 -> "+ currentNumberStr();
         }
     }
 
@@ -65,10 +73,10 @@ public class Game {
         }
     }
 
-    @JsonGetter("balance")
-    public String getTheName() {
-        return String.valueOf(this.balance);
-    }
+    // @JsonGetter("balance")
+    // public String getTheName() {
+    //     return String.valueOf(this.balance);
+    // }
 
 
     // @Override

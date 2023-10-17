@@ -1,13 +1,12 @@
 package com.game.restgame;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.fasterxml.jackson.databind.util.JSONPObject;
 
 //Only for endpoint routing
 @RestController
@@ -24,9 +23,9 @@ public class gameController {
     public String homepage(){
         return this.gameService.getHomePage();
     }
-    //Set players balance
+    //Set player balance and returns properties in JSON
     @PostMapping("/setbalance")
-    public String createGame(@RequestParam Integer balance){   
+    public Game createGame(@RequestParam Integer balance){   
         return this.gameService.postBalance(balance);
     }
     //Set size of bets

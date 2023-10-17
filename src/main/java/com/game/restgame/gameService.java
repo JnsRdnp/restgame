@@ -17,9 +17,9 @@ public class gameService {
         return "This is the homepage, service";
     }
 
-    public String postBalance(Integer balance){
+    public Game postBalance(Integer balance){
         Game1.setBalance(balance);
-        return "Balance set to "+String.valueOf(this.Game1.getBalance());
+        return Game1;
     }
 
     public String postBetsize(Integer bet){
