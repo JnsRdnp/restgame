@@ -1,6 +1,11 @@
 package com.game.restgame;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -20,6 +25,9 @@ public class gameService {
         homeJson.put("/setBetsize","Set your betsize POST /setbetsize?bet=x");
         homeJson.put("/hit","Deal a card for the player GET");
         homeJson.put("/stay","Player stay on number and deal for dealer GET");
+        homeJson.put("/values","Current Game values in JSON GET");
+        homeJson.put("/save","Save current game object to a file GET");
+        homeJson.put("/getsaved","Get saved Game object from a file and overwrite current Game object GET");
 
 
         return homeJson;
@@ -54,7 +62,38 @@ public class gameService {
         return this.Game1;
     }
 
+    public void saveObjectProperties() {
+        try {
+            FileOutputStream fileStream = new FileOutputStream("gameObjects.txt");
+            ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
 
+            objectStream.writeObject(this.Game1);
 
+            // Close the streams when done
+            objectStream.close();
+            fileStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Game getSavedPropertiesAndOverwrite() {
+        try {
+			FileInputStream fi = new FileInputStream(new File("gameObjects.txt"));
+			ObjectInputStream oi = new ObjectInputStream(fi);
+
+            Game GameSaved = (Game) oi.readObject();
+
+            // Close the streams when done
+            oi.close();
+            fi.close();
+            this.Game1 = GameSaved;
+            return this.Game1;
+
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }
