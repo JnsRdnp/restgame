@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-//Only for endpoint routing
 @RestController
 public class gameController {
     
@@ -46,17 +45,25 @@ public class gameController {
         return this.gameService.getStay();
     }
 
+    //Get current Game object values
     @GetMapping("/values")
-    public Game getProp(){
+    public Game getProp(@RequestParam(required = false) String param) {
+        // You can use the "param" parameter to conditionally modify your response
+        if (param != null) {
+            // Handle the parameter as needed
+        }
+
         return gameService.getGame();
     }
 
+    //Save current Game object to a file
     @GetMapping("/save")
     public String saves(){
         gameService.saveObjectProperties();
         return "Game object saved to a file";
     }
 
+    //Get saved Game object and overwrite current Game object
     @GetMapping("/getsaved")
     public Game objectFromFile(){
        return gameService.getSavedPropertiesAndOverwrite();    
