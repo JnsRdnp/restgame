@@ -47,13 +47,10 @@ public class gameController {
 
     //Get current Game object values
     @GetMapping("/values")
-    public Game getProp(@RequestParam(required = false) String param) {
+    public String getProp(@RequestParam(required = false) String param) {
         // You can use the "param" parameter to conditionally modify your response
-        if (param != null) {
-            // Handle the parameter as needed
-        }
-
-        return gameService.getGame();
+        
+        return gameService.getGame(param);
     }
 
     //Save current Game object to a file
